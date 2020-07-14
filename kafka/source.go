@@ -121,7 +121,7 @@ func (this *kafkaSource) Ping() error {
 
 	if this.conn == nil {
 		for _, host := range this.cfg.Hosts {
-			this.conn, err = k.Dial("tcp", host)
+			this.conn, err = this.reader.Config().Dialer.Dial("tcp", host)
 			if err != nil {
 				continue
 			}
