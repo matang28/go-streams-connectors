@@ -108,6 +108,8 @@ type SourceConfig struct {
 	//
 	// The default is ValueEntryFunc to preserve backward computability
 	ValueExtractor ValueExtractorFunc
+
+	Dialer *k.Dialer
 }
 
 func NewSourceConfig(hosts []string, topic string, consumerGroupId string) SourceConfig {
@@ -130,6 +132,7 @@ func NewSourceConfig(hosts []string, topic string, consumerGroupId string) Sourc
 	out.ReadBackoffMaxMs = 1000
 	out.MaxAttempts = 5
 	out.ValueExtractor = ValueEntryFunc
+	out.Dialer = nil
 	return out
 }
 

@@ -162,6 +162,7 @@ func (this *kafkaSource) connect() error {
 		ReadBackoffMin:         time.Duration(this.cfg.ReadBackoffMinMs) * time.Millisecond,
 		ReadBackoffMax:         time.Duration(this.cfg.ReadBackoffMaxMs) * time.Millisecond,
 		MaxAttempts:            this.cfg.MaxAttempts,
+		Dialer:                 this.cfg.Dialer,
 	})
 
 	err := this.Ping()
